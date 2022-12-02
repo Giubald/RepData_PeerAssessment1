@@ -63,8 +63,9 @@ steps_median
 histogram to show the frequency of the steps number per day
 
 ```{r}
-hist(steps_day, col = "red", xlab = "Total Steps per day", ylab = "frequency")
-
+plot1 <-hist(steps_day, col = "red", xlab = "Total Steps per day", ylab = "frequency")
+dev.copy(png, file="Plot1.png") #save the plot in png, 480x480 pixels by default
+dev.off() #close the saving session
 ```
 
 ## 5 minutes Intervals
@@ -89,6 +90,8 @@ plot2 <- ggplot(step_a_int, mapping = aes(interval, av_steps)) +
 
 
 print(plot2)
+dev.copy(png, file="Plot2.png") #save the plot in png, 480x480 pixels by default
+dev.off() #close the saving session
 
 ```
 
@@ -131,7 +134,10 @@ date_filled <- unique(data_filled$date)
 steps_day_filled_df <- data.frame(steps_day_filled, date_filled)
 
 
-hist(steps_day_filled, col = "red", xlab = "Total Steps per day", ylab = "frequency")
+plot3 <-hist(steps_day_filled, col = "red", xlab = "Total Steps per day", ylab = "frequency")
+
+dev.copy(png, file="Plot3.png") #save the plot in png, 480x480 pixels by default
+dev.off() #close the saving session
 
 steps_mean_filled <- mean(steps_day_filled) #mean
 steps_median_filled <- median(steps_day_filled) #median
@@ -179,5 +185,7 @@ plot4 <- ggplot(step_a_int, aes(x = interval, y = av_steps, color = dayType )) +
 
 
 print(plot4)
+dev.copy(png, file="Plot4.png") #save the plot in png, 480x480 pixels by default
+dev.off() #close the saving session
 
 ```
